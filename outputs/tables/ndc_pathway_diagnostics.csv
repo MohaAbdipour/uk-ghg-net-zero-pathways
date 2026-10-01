@@ -1,0 +1,3 @@
+target_year,target_reduction_fraction,target_emissions_mtco2e,remaining_gap_from_2024_mtco2e,constant_absolute_reduction_mtco2e_per_year,constant_percentage_reduction_per_year
+2030,0.68,254.98418670542682,120.48167351128043,20.08027891854674,0.06245857591796866
+2035,0.81,151.39686085634716,224.0689993603601,20.36990903276001,0.07925242591893378
