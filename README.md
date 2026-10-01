@@ -42,11 +42,9 @@ python scripts/plot_results.py
 python -m unittest discover -s tests -v
 ```
 
-The script writes compact CSV tables to `outputs/tables`. Later steps will add scientific figures and an uncertainty assessment.
+The scripts write compact CSV tables to `outputs/tables` and publication-ready figures to `outputs/figures`. The automated checks reconcile the principal totals, scopes, targets and uncertainty intervals against the source workbook.
 
 ## Sources and licence
 
 The source workbook is an Accredited Official Statistics release and is available under the Open Government Licence v3.0. Full URLs, attribution, retrieval date, scope notes and the source-file checksum are recorded in [docs/data-sources.md](docs/data-sources.md).
-
-This repository is being developed locally. It has not been published to GitHub.
 

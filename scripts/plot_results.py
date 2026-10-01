@@ -141,7 +141,7 @@ def figure_sector_change_and_uncertainty() -> None:
     sectors.sort(key=lambda row: float(row["avoided_emissions_mtco2e"]), reverse=True)
     uncertainty.sort(key=lambda row: float(row["emissions_2024_mtco2e"]), reverse=True)
 
-    width, height = 1500, 900
+    width, height = 1500, 930
     elements: list[str] = []
     elements.append(text(65, 58, "Sector changes and uncertainty in territorial emissions", 28, weight="bold"))
     elements.append(text(65, 96, "a. Contribution to the UK reduction", 20, weight="bold"))
@@ -206,6 +206,9 @@ def figure_sector_change_and_uncertainty() -> None:
             fill=GREY,
         )
     )
+    elements.append(
+        text(65, 900, "Source: DESNZ, Final UK greenhouse gas emissions statistics, 1990 to 2024.", 14, fill=GREY)
+    )
     write_svg(FIGURE_DIR / "sector_change_and_uncertainty.svg", width, height, elements)
 
 
@@ -224,7 +227,7 @@ def figure_ndc_pathways() -> None:
     path_2030 = compound_path(observed[-1][1], targets[2030], 2024, 2030)
     path_2035 = compound_path(observed[-1][1], targets[2035], 2024, 2035)
 
-    width, height = 1350, 820
+    width, height = 1350, 855
     left, right, top, bottom = 105, 1280, 120, 690
     xmin, xmax, ymin, ymax = 2021, 2035, 120.0, 455.0
 
@@ -312,6 +315,9 @@ def figure_ndc_pathways() -> None:
     elements.append(
         text(65, 798, "The NDC headline targets exclude international aviation and shipping.", 14, fill=GREY)
     )
+    elements.append(
+        text(65, 830, "Sources: DESNZ final UK emissions statistics, 1990 to 2024; UK 2035 NDC.", 14, fill=GREY)
+    )
     write_svg(FIGURE_DIR / "ndc_pathways.svg", width, height, elements)
 
 
@@ -320,7 +326,7 @@ def figure_historical_pace() -> None:
     pathways = read_csv(OUTPUT_DIR / "ndc_pathway_diagnostics.csv")
     required = [float(row["constant_absolute_reduction_mtco2e_per_year"]) for row in pathways]
 
-    width, height = 1500, 850
+    width, height = 1500, 880
     left, right, top, bottom = 105, 1425, 125, 680
     xmin, xmax, ymin, ymax = 1991, 2024, -30.0, 60.0
 
@@ -400,6 +406,9 @@ def figure_historical_pace() -> None:
             14,
             fill=GREY,
         )
+    )
+    elements.append(
+        text(65, 848, "Source: DESNZ, Final UK greenhouse gas emissions statistics, 1990 to 2024.", 14, fill=GREY)
     )
     elements.append(
         text(

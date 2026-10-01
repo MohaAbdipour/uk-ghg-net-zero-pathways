@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1350" height="820" viewBox="0 0 1350 820">
+<svg xmlns="http://www.w3.org/2000/svg" width="1350" height="855" viewBox="0 0 1350 855">
 <rect width="100%" height="100%" fill="white"/>
 <g font-family="Arial, Helvetica, sans-serif">
 <text x="65.0" y="58.0" font-size="28" text-anchor="start" font-weight="bold" fill="#1f2933">Observed NDC-scope emissions and endpoint pathways</text>
@@ -50,5 +50,6 @@
 <text x="1145.0" y="97.0" font-size="14" text-anchor="start" font-weight="normal" fill="#1f2933">Path to 2035</text>
 <text x="65.0" y="772.0" font-size="14" text-anchor="start" font-weight="normal" fill="#5d6770">Observed scope: UK, Crown Dependencies and Gibraltar. Paths are arithmetic benchmarks from 2024, not forecasts.</text>
 <text x="65.0" y="798.0" font-size="14" text-anchor="start" font-weight="normal" fill="#5d6770">The NDC headline targets exclude international aviation and shipping.</text>
+<text x="65.0" y="830.0" font-size="14" text-anchor="start" font-weight="normal" fill="#5d6770">Sources: DESNZ final UK emissions statistics, 1990 to 2024; UK 2035 NDC.</text>
 </g>
 </svg>

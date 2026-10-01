@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="900" viewBox="0 0 1500 900">
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="930" viewBox="0 0 1500 930">
 <rect width="100%" height="100%" fill="white"/>
 <g font-family="Arial, Helvetica, sans-serif">
 <text x="65.0" y="58.0" font-size="28" text-anchor="start" font-weight="bold" fill="#1f2933">Sector changes and uncertainty in territorial emissions</text>
@@ -99,5 +99,6 @@
 <line x1="1025.1" y1="676.0" x2="1025.1" y2="692.0" stroke="#1b9e77" stroke-width="2"/>
 <circle cx="1011.1" cy="684.0" r="6" fill="#17365d"/>
 <text x="65.0" y="868.0" font-size="14" text-anchor="start" font-weight="normal" fill="#5d6770">Panel a: UK only. Panel b: UK, Crown Dependencies and relevant Overseas Territories. LULUCF is a net balance.</text>
+<text x="65.0" y="900.0" font-size="14" text-anchor="start" font-weight="normal" fill="#5d6770">Source: DESNZ, Final UK greenhouse gas emissions statistics, 1990 to 2024.</text>
 </g>
 </svg>
