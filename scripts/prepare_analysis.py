@@ -15,6 +15,7 @@ SOURCE_PATH = PROJECT_ROOT / "data" / "raw" / "final-greenhouse-gas-emissions-ta
 OUTPUT_DIR = PROJECT_ROOT / "outputs" / "tables"
 EXPECTED_SHA256 = "39849813643d6ed812c10030fb4fdcba98e598d7f8a890a446450c74baba66fa"
 TARGETS = {2030: 0.68, 2035: 0.81}
+PACE_PERIODS = ((1990, 2000), (2000, 2010), (2010, 2020), (2020, 2024), (2014, 2024))
 
 
 def sha256(path: Path) -> str:
@@ -69,6 +70,43 @@ def load_sector_totals(workbook_path: Path) -> tuple[list[dict[str, float | str]
     return totals, grand_total
 
 
+def load_sector_context(workbook_path: Path) -> list[dict[str, float | str]]:
+    """Extract selected sector years for recent-change interpretation."""
+    workbook = load_workbook(workbook_path, read_only=True, data_only=True)
+    sheet = workbook["1.2"]
+    years = {
+        int(sheet.cell(6, column).value): column
+        for column in range(4, sheet.max_column + 1)
+        if sheet.cell(6, column).value is not None
+    }
+    selected_years = (1990, 2014, 2019, 2024)
+    if not set(selected_years).issubset(years):
+        raise ValueError("Table 1.2 is missing a required comparison year")
+
+    records: list[dict[str, float | str]] = []
+    grand_2024 = None
+    for row in range(7, sheet.max_row + 1):
+        label = sheet.cell(row, 1).value
+        if label == "Grand total":
+            grand_2024 = float(sheet.cell(row, years[2024]).value)
+        elif isinstance(label, str) and label.endswith(" total"):
+            values = {year: float(sheet.cell(row, years[year]).value) for year in selected_years}
+            records.append(
+                {
+                    "sector": label.removesuffix(" total"),
+                    **{f"emissions_{year}_mtco2e": value for year, value in values.items()},
+                    "reduction_2014_2024_mtco2e": values[2014] - values[2024],
+                    "mean_annual_reduction_2014_2024_mtco2e": (values[2014] - values[2024]) / 10,
+                    "reduction_2019_2024_mtco2e": values[2019] - values[2024],
+                }
+            )
+    if grand_2024 is None or len(records) != 8:
+        raise ValueError("Expected eight sectors and a 2024 grand total")
+    for record in records:
+        record["share_of_2024_emissions"] = float(record["emissions_2024_mtco2e"]) / grand_2024
+    return records
+
+
 def load_ndc_inputs(workbook_path: Path) -> dict[str, float]:
     workbook = load_workbook(workbook_path, read_only=True, data_only=True)
     sheet = workbook["2.2"]
@@ -91,6 +129,21 @@ def load_ndc_inputs(workbook_path: Path) -> dict[str, float]:
     }
     result.update({f"emissions_{year}_mtco2e": value for year, value in observations.items()})
     return result
+
+
+def load_ndc_timeseries(workbook_path: Path) -> dict[int, float]:
+    """Read the complete Paris Agreement reporting-scope series from Table 3.3."""
+    workbook = load_workbook(workbook_path, read_only=True, data_only=True)
+    sheet = workbook["3.3"]
+    if "Paris Agreement" not in str(sheet["A6"].value) or "Gibraltar" not in str(sheet["A6"].value):
+        raise ValueError("Unexpected Paris Agreement scope note in Table 3.3")
+    if sheet["A16"].value != "Total greenhouse gas emissions reported under the Paris Agreement":
+        raise ValueError("Paris Agreement total row was not found in Table 3.3")
+    return {
+        int(sheet.cell(9, column).value): float(sheet.cell(16, column).value)
+        for column in range(2, sheet.max_column + 1)
+        if sheet.cell(9, column).value is not None
+    }
 
 
 def load_sector_uncertainty(workbook_path: Path) -> list[dict[str, float | str]]:
@@ -141,6 +194,53 @@ def calculate_pathways(base: float, emissions_2024: float) -> list[dict[str, flo
     return pathways
 
 
+def calculate_historical_pace(timeseries: dict[int, float]) -> list[dict[str, float | int | str]]:
+    years = sorted(timeseries)
+    rows: list[dict[str, float | int | str]] = []
+    for year in years:
+        if year == years[0]:
+            annual_reduction: float | str = ""
+        else:
+            annual_reduction = timeseries[year - 1] - timeseries[year]
+        trailing_start = year - 5
+        trailing_mean: float | str = ""
+        if trailing_start in timeseries:
+            trailing_mean = (timeseries[trailing_start] - timeseries[year]) / 5
+        rows.append(
+            {
+                "year": year,
+                "emissions_mtco2e": timeseries[year],
+                "annual_reduction_mtco2e": annual_reduction,
+                "trailing_5y_mean_reduction_mtco2e_per_year": trailing_mean,
+            }
+        )
+    return rows
+
+
+def calculate_period_pace(
+    timeseries: dict[int, float], pathways: list[dict[str, float | int]]
+) -> list[dict[str, float | int | str]]:
+    required_2030 = float(pathways[0]["constant_absolute_reduction_mtco2e_per_year"])
+    required_2035 = float(pathways[1]["constant_absolute_reduction_mtco2e_per_year"])
+    rows: list[dict[str, float | int | str]] = []
+    for start, end in PACE_PERIODS:
+        years = end - start
+        absolute = (timeseries[start] - timeseries[end]) / years
+        compound = 1 - math.pow(timeseries[end] / timeseries[start], 1 / years)
+        rows.append(
+            {
+                "period": f"{start}-{end}",
+                "start_year": start,
+                "end_year": end,
+                "mean_absolute_reduction_mtco2e_per_year": absolute,
+                "compound_reduction_fraction_per_year": compound,
+                "ratio_to_required_2030_absolute_pace": absolute / required_2030,
+                "ratio_to_required_2035_absolute_pace": absolute / required_2035,
+            }
+        )
+    return rows
+
+
 def write_csv(path: Path, rows: list[dict[str, object]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as target:
@@ -182,11 +282,21 @@ def main() -> None:
         {"year": year, "emissions_mtco2e": ndc[f"emissions_{year}_mtco2e"]}
         for year in range(2021, 2025)
     ]
+    ndc_timeseries = load_ndc_timeseries(SOURCE_PATH)
+    for year in range(2021, 2025):
+        if not math.isclose(ndc_timeseries[year], ndc[f"emissions_{year}_mtco2e"], abs_tol=1e-9):
+            raise ValueError(f"Table 3.3 does not match Table 2.2 for {year}")
+    historical_pace = calculate_historical_pace(ndc_timeseries)
+    period_pace = calculate_period_pace(ndc_timeseries, pathways)
+    sector_context = load_sector_context(SOURCE_PATH)
 
     write_csv(OUTPUT_DIR / "sector_change_1990_2024.csv", sectors)
+    write_csv(OUTPUT_DIR / "sector_context.csv", sector_context)
     write_csv(OUTPUT_DIR / "sector_uncertainty_2024.csv", uncertainty)
     write_csv(OUTPUT_DIR / "ndc_observations_2021_2024.csv", observations)
     write_csv(OUTPUT_DIR / "ndc_pathway_diagnostics.csv", pathways)
+    write_csv(OUTPUT_DIR / "ndc_historical_pace.csv", historical_pace)
+    write_csv(OUTPUT_DIR / "period_pace_comparison.csv", period_pace)
 
 
 if __name__ == "__main__":

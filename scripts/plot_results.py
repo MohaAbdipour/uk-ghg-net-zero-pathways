@@ -315,10 +315,109 @@ def figure_ndc_pathways() -> None:
     write_svg(FIGURE_DIR / "ndc_pathways.svg", width, height, elements)
 
 
+def figure_historical_pace() -> None:
+    pace = [row for row in read_csv(OUTPUT_DIR / "ndc_historical_pace.csv") if row["annual_reduction_mtco2e"]]
+    pathways = read_csv(OUTPUT_DIR / "ndc_pathway_diagnostics.csv")
+    required = [float(row["constant_absolute_reduction_mtco2e_per_year"]) for row in pathways]
+
+    width, height = 1500, 850
+    left, right, top, bottom = 105, 1425, 125, 680
+    xmin, xmax, ymin, ymax = 1991, 2024, -30.0, 60.0
+
+    def sx(year: float) -> float:
+        return left + (year - xmin) / (xmax - xmin) * (right - left)
+
+    def sy(value: float) -> float:
+        return bottom - (value - ymin) / (ymax - ymin) * (bottom - top)
+
+    elements: list[str] = []
+    elements.append(text(65, 58, "Historical emission reductions and required endpoint pace", 28, weight="bold"))
+    for tick in range(-20, 61, 20):
+        y = sy(tick)
+        elements.append(line(left, y, right, y, LIGHT_GREY))
+        elements.append(text(left - 14, y + 5, str(tick), 14, anchor="end", fill=GREY))
+    elements.append(text(left - 14, top - 14, "MtCO2e/yr", 14, anchor="end", fill=GREY))
+    elements.append(line(left, sy(0), right, sy(0), GREY, 1.5))
+
+    target_low, target_high = min(required), max(required)
+    target_y1, target_y2 = sy(target_high), sy(target_low)
+    elements.append(
+        f'<rect x="{left}" y="{target_y1:.1f}" width="{right - left}" height="{max(4, target_y2 - target_y1):.1f}" fill="#f4a261"/>'
+    )
+    bar_width = 25
+    rolling_points: list[tuple[int, float]] = []
+    for row in pace:
+        year = int(row["year"])
+        value = float(row["annual_reduction_mtco2e"])
+        x = sx(year)
+        y0, yv = sy(0), sy(value)
+        fill = BLUE if value >= 0 else "#9aa4ad"
+        elements.append(
+            f'<rect x="{x - bar_width / 2:.1f}" y="{min(y0, yv):.1f}" width="{bar_width}" height="{abs(y0 - yv):.1f}" fill="{fill}"/>'
+        )
+        rolling = row["trailing_5y_mean_reduction_mtco2e_per_year"]
+        if rolling:
+            rolling_points.append((year, float(rolling)))
+
+    coords = " ".join(f"{sx(year):.1f},{sy(value):.1f}" for year, value in rolling_points)
+    elements.append(
+        f'<polyline points="{coords}" fill="none" stroke="{NAVY}" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>'
+    )
+    elements.append(
+        f'<rect x="{right - 405}" y="{target_y1 - 42:.1f}" width="405" height="30" fill="white"/>'
+    )
+    elements.append(
+        text(
+            right - 8,
+            target_y1 - 20,
+            f"Required endpoint pace: {target_low:.1f}-{target_high:.1f} MtCO2e/yr",
+            14,
+            anchor="end",
+            fill=ORANGE,
+            weight="bold",
+        )
+    )
+
+    for year in range(1992, 2025, 4):
+        elements.append(text(sx(year), bottom + 30, str(year), 14, anchor="middle", fill=GREY))
+    elements.append(line(left, bottom, right, bottom, GREY, 1.2))
+    elements.append(text((left + right) / 2, bottom + 68, "Year", 16, anchor="middle"))
+
+    elements.append(text(sx(2009), sy(55.9) - 12, "2009", 13, anchor="middle", fill=GREY))
+    elements.append(text(sx(2020), sy(40.3) - 12, "2020", 13, anchor="middle", fill=GREY))
+
+    legend_y = 96
+    elements.append(f'<rect x="865" y="{legend_y - 10}" width="24" height="14" fill="{BLUE}"/>')
+    elements.append(text(899, legend_y + 2, "Annual reduction", 14))
+    elements.append(line(1050, legend_y - 3, 1090, legend_y - 3, NAVY, 4))
+    elements.append(text(1100, legend_y + 2, "Trailing 5-year mean", 14))
+
+    elements.append(
+        text(
+            65,
+            780,
+            "Positive bars indicate falling emissions. The 2009 and 2020 reductions coincide with major economic disruption and are not treated as sustained pathways.",
+            14,
+            fill=GREY,
+        )
+    )
+    elements.append(
+        text(
+            65,
+            808,
+            "Series scope: UK, Crown Dependencies and Gibraltar, consistent with Paris Agreement reporting.",
+            14,
+            fill=GREY,
+        )
+    )
+    write_svg(FIGURE_DIR / "historical_reduction_pace.svg", width, height, elements)
+
+
 def main() -> None:
     prepare_tables()
     figure_sector_change_and_uncertainty()
     figure_ndc_pathways()
+    figure_historical_pace()
 
 
 if __name__ == "__main__":

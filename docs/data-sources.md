@@ -17,6 +17,7 @@ Tables used:
 
 - Table 1.2: UK territorial greenhouse gas emissions by source category, 1990-2024.
 - Table 2.2: progress towards UK international greenhouse gas reduction targets under the Paris Agreement.
+- Table 3.3: complete 1990-2024 emissions series for the Paris Agreement reporting scope.
 - Table 4.2: uncertainty by source sector. This table covers the UK, Crown Dependencies and Overseas Territories and will not be treated as UK-only uncertainty.
 
 The release states that the 1990-2024 series has been revised and supersedes earlier editions. Source-sector emissions allocate emissions to the sector where they occur.

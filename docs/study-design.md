@@ -47,12 +47,15 @@ constant_absolute_reduction = remaining_gap / n
 constant_percentage_reduction = 1 - (E_target / E_2024) ** (1 / n)
 ```
 
+Historical pace is evaluated from the complete Paris Agreement scope series in Table 3.3. Annual reduction is the previous year's estimate minus the current estimate. Multi-year absolute pace divides the endpoint difference by elapsed years. Compound pace uses the same endpoint ratio method as the target pathways.
+
 ## Quality checks
 
 - Confirm the source checksum before processing.
 - Confirm Table 1.2 is explicitly UK-only.
 - Reconcile the sum of the eight published sector totals with the grand total for 1990 and 2024.
 - Read the 2030 base year, 2024 observation and target from Table 2.2.
+- Confirm the 2021-2024 values in Table 3.3 match Table 2.2 before using the full historical series.
 - Recalculate the published 2030 target from the base year and 68% reduction.
 - Keep the UK-only sector series separate from the wider NDC-scope series.
 

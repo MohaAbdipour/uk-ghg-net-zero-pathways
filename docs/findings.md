@@ -20,6 +20,20 @@ The implied 2035 threshold is 151.4 MtCO2e. The gap from 2024 is 224.1 MtCO2e. A
 
 These paths do not represent DESNZ projections or assumed policy delivery. They show the annual pace implied by the published endpoints.
 
+## Historical pace comparison
+
+The Paris Agreement scope series fell by an average of 15.8 MtCO2e per year from 2014 to 2024. The corresponding compound reduction was 3.45% per year. The absolute reduction required to reach the 2030 threshold is 20.1 MtCO2e per year, 27.0% above the 2014-2024 average. The 2035 endpoint requires 20.4 MtCO2e per year, 28.9% above that historical average.
+
+The latest trailing five-year mean, measured from 2019 to 2024, was 14.9 MtCO2e per year. Individual annual changes were volatile. The large reductions in 2009 and 2020 coincided with the global financial crisis and the COVID-19 pandemic. They are observations, but they are not suitable templates for a sustained transition.
+
+![Historical reduction pace](../outputs/figures/historical_reduction_pace.png)
+
+## Sector context
+
+The composition of the remaining emissions differs from the composition of the historical reduction. Domestic transport accounted for 29.6% of UK territorial emissions in 2024 and buildings and product uses accounted for 21.9%. Electricity supply accounted for 10.1% after its large historical decline.
+
+Between 2014 and 2024, electricity supply still contributed 55.2% of the UK-only reduction and industry contributed 17.9%. Domestic transport and buildings together contributed 15.7%. This indicates that extending the historical electricity-sector trend cannot deliver the national endpoints on its own. Further reductions must involve the large remaining transport and building sources, alongside continued change in industry, fuel supply and agriculture.
+
 ## Uncertainty
 
 DESNZ reports a 2024 total of 378.1 MtCO2e in its uncertainty model, with a 95% range from 368.8 to 388.7 MtCO2e. This table covers the UK, Crown Dependencies and relevant Overseas Territories, so it is not numerically identical to either the UK-only source total or the NDC-scope total.

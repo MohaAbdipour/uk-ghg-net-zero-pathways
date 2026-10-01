@@ -24,12 +24,15 @@ The study design, official data source, processing and first results are complet
 - Domestic transport was the largest source sector in 2024 at 110.4 MtCO2e.
 - The 2030 NDC threshold is 120.5 MtCO2e below the 2024 NDC-scope estimate. A constant compound pathway requires a 6.25% annual reduction.
 - The corresponding compound rate to the 2035 threshold is 7.93% per year.
+- The required absolute pace is about 27% above the average achieved from 2014 to 2024.
 
 The calculations, uncertainty interpretation and figures are presented in [docs/findings.md](docs/findings.md).
 
 ![Sector changes and uncertainty](outputs/figures/sector_change_and_uncertainty.png)
 
 ![NDC pathway diagnostics](outputs/figures/ndc_pathways.png)
+
+![Historical reduction pace](outputs/figures/historical_reduction_pace.png)
 
 ## Run
 
