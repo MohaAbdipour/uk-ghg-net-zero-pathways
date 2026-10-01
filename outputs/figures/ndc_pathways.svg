@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1350" height="820" viewBox="0 0 1350 820">
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="65.0" y="58.0" font-size="28" text-anchor="start" font-weight="bold" fill="#1f2933">Observed NDC-scope emissions and endpoint pathways</text>
+<rect x="356.8" y="120" width="923.2" height="570" fill="#f4f6f7"/>
+<text x="368.8" y="145.0" font-size="14" text-anchor="start" font-weight="normal" fill="#5d6770">Diagnostic pathways</text>
+<line x1="105.0" y1="639.0" x2="1280.0" y2="639.0" stroke="#d9dee3" stroke-width="1"/>
+<text x="91.0" y="644.0" font-size="14" text-anchor="end" font-weight="normal" fill="#5d6770">150</text>
+<line x1="105.0" y1="553.9" x2="1280.0" y2="553.9" stroke="#d9dee3" stroke-width="1"/>
+<text x="91.0" y="558.9" font-size="14" text-anchor="end" font-weight="normal" fill="#5d6770">200</text>
+<line x1="105.0" y1="468.8" x2="1280.0" y2="468.8" stroke="#d9dee3" stroke-width="1"/>
+<text x="91.0" y="473.8" font-size="14" text-anchor="end" font-weight="normal" fill="#5d6770">250</text>
+<line x1="105.0" y1="383.7" x2="1280.0" y2="383.7" stroke="#d9dee3" stroke-width="1"/>
+<text x="91.0" y="388.7" font-size="14" text-anchor="end" font-weight="normal" fill="#5d6770">300</text>
+<line x1="105.0" y1="298.7" x2="1280.0" y2="298.7" stroke="#d9dee3" stroke-width="1"/>
+<text x="91.0" y="303.7" font-size="14" text-anchor="end" font-weight="normal" fill="#5d6770">350</text>
+<line x1="105.0" y1="213.6" x2="1280.0" y2="213.6" stroke="#d9dee3" stroke-width="1"/>
+<text x="91.0" y="218.6" font-size="14" text-anchor="end" font-weight="normal" fill="#5d6770">400</text>
+<line x1="105.0" y1="128.5" x2="1280.0" y2="128.5" stroke="#d9dee3" stroke-width="1"/>
+<text x="91.0" y="133.5" font-size="14" text-anchor="end" font-weight="normal" fill="#5d6770">450</text>
+<text x="105.0" y="720.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">2021</text>
+<text x="272.9" y="720.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">2023</text>
+<text x="440.7" y="720.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">2025</text>
+<text x="608.6" y="720.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">2027</text>
+<text x="776.4" y="720.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">2029</text>
+<text x="944.3" y="720.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">2031</text>
+<text x="1112.1" y="720.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">2033</text>
+<text x="1280.0" y="720.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">2035</text>
+<line x1="105.0" y1="690.0" x2="1280.0" y2="690.0" stroke="#5d6770" stroke-width="1.2"/>
+<line x1="105.0" y1="120.0" x2="105.0" y2="690.0" stroke="#5d6770" stroke-width="1.2"/>
+<text x="91.0" y="106.0" font-size="14" text-anchor="end" font-weight="normal" fill="#5d6770">MtCO2e</text>
+<text x="692.5" y="742.0" font-size="16" text-anchor="middle" font-weight="normal" fill="#1f2933">Year</text>
+<polyline points="105.0,171.7 188.9,202.6 272.9,237.1 356.8,255.3" fill="none" stroke="#17365d" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="356.8,255.3 440.7,295.2 524.6,332.6 608.6,367.7 692.5,400.6 776.4,431.4 860.4,460.3" fill="none" stroke="#2c7fb8" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="10 8"/>
+<polyline points="356.8,255.3 440.7,306.0 524.6,352.6 608.6,395.5 692.5,435.0 776.4,471.4 860.4,504.9 944.3,535.8 1028.2,564.2 1112.1,590.3 1196.1,614.4 1280.0,636.6" fill="none" stroke="#d95f02" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="10 8"/>
+<circle cx="105.0" cy="171.7" r="6" fill="#17365d"/>
+<circle cx="188.9" cy="202.6" r="6" fill="#17365d"/>
+<circle cx="272.9" cy="237.1" r="6" fill="#17365d"/>
+<circle cx="356.8" cy="255.3" r="6" fill="#17365d"/>
+<circle cx="860.4" cy="460.3" r="7" fill="#2c7fb8"/>
+<circle cx="1280.0" cy="636.6" r="7" fill="#d95f02"/>
+<text x="870.4" y="440.3" font-size="15" text-anchor="start" font-weight="bold" fill="#2c7fb8">2030 target: 255.0 MtCO2e</text>
+<text x="1270.0" y="616.6" font-size="15" text-anchor="end" font-weight="bold" fill="#d95f02">2035 target: 151.4 MtCO2e</text>
+<line x1="710.0" y1="92.0" x2="755.0" y2="92.0" stroke="#17365d" stroke-width="4"/>
+<text x="765.0" y="97.0" font-size="14" text-anchor="start" font-weight="normal" fill="#1f2933">Final observations</text>
+<line x1="905.0" y1="92.0" x2="950.0" y2="92.0" stroke="#2c7fb8" stroke-width="4" stroke-dasharray="10 8"/>
+<text x="960.0" y="97.0" font-size="14" text-anchor="start" font-weight="normal" fill="#1f2933">Path to 2030</text>
+<line x1="1090.0" y1="92.0" x2="1135.0" y2="92.0" stroke="#d95f02" stroke-width="4" stroke-dasharray="10 8"/>
+<text x="1145.0" y="97.0" font-size="14" text-anchor="start" font-weight="normal" fill="#1f2933">Path to 2035</text>
+<text x="65.0" y="772.0" font-size="14" text-anchor="start" font-weight="normal" fill="#5d6770">Observed scope: UK, Crown Dependencies and Gibraltar. Paths are arithmetic benchmarks from 2024, not forecasts.</text>
+<text x="65.0" y="798.0" font-size="14" text-anchor="start" font-weight="normal" fill="#5d6770">The NDC headline targets exclude international aviation and shipping.</text>
+</g>
+</svg>

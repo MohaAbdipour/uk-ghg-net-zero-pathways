@@ -63,5 +63,5 @@ constant_percentage_reduction = 1 - (E_target / E_2024) ** (1 / n)
 - Inventory estimates are revised when methods and input data improve.
 - Sector contributions are an accounting decomposition, not a causal attribution.
 - Straight-line and compound pathways do not model technology, policy, cost, behaviour or carbon-budget accounting.
-- The initial analysis does not yet propagate inventory uncertainty into the sector contributions or target pathways.
+- DESNZ publishes sector uncertainty for a wider geographical scope than the UK-only sector table. The intervals are therefore reported separately and are not propagated into the UK-only contribution estimates or NDC pathways.
 

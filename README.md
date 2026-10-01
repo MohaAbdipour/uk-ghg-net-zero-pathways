@@ -15,12 +15,27 @@ The two geographical scopes are analysed separately. Sector totals are not used 
 
 ## Current status
 
-The study design, official data source and first processing step are complete. The processing script extracts the published sector totals and calculates transparent constant-absolute and constant-percentage pathways from the 2024 NDC-scope observation.
+The study design, official data source, processing and first results are complete. The analysis extracts the published sector totals, keeps the different reporting scopes separate, evaluates the published uncertainty intervals and calculates transparent constant-absolute and constant-percentage pathways from the 2024 NDC-scope observation.
+
+## Main findings
+
+- UK territorial emissions fell by 417.4 MtCO2e, or 52.8%, between 1990 and 2024.
+- Electricity supply and industry account for 66.0% of the net reduction.
+- Domestic transport was the largest source sector in 2024 at 110.4 MtCO2e.
+- The 2030 NDC threshold is 120.5 MtCO2e below the 2024 NDC-scope estimate. A constant compound pathway requires a 6.25% annual reduction.
+- The corresponding compound rate to the 2035 threshold is 7.93% per year.
+
+The calculations, uncertainty interpretation and figures are presented in [docs/findings.md](docs/findings.md).
+
+![Sector changes and uncertainty](outputs/figures/sector_change_and_uncertainty.png)
+
+![NDC pathway diagnostics](outputs/figures/ndc_pathways.png)
 
 ## Run
 
 ```powershell
 python scripts/prepare_analysis.py
+python scripts/plot_results.py
 python -m unittest discover -s tests -v
 ```
 

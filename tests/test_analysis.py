@@ -7,7 +7,13 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 
-from prepare_analysis import SOURCE_PATH, calculate_pathways, load_ndc_inputs, load_sector_totals
+from prepare_analysis import (
+    SOURCE_PATH,
+    calculate_pathways,
+    load_ndc_inputs,
+    load_sector_totals,
+    load_sector_uncertainty,
+)
 
 
 class AnalysisTests(unittest.TestCase):
@@ -42,6 +48,18 @@ class AnalysisTests(unittest.TestCase):
         for row in pathways:
             self.assertGreater(float(row["constant_absolute_reduction_mtco2e_per_year"]), 0)
             self.assertGreater(float(row["constant_percentage_reduction_per_year"]), 0)
+
+    def test_uncertainty_intervals_contain_central_estimates(self) -> None:
+        rows = load_sector_uncertainty(SOURCE_PATH)
+        self.assertEqual(len(rows), 9)
+        for row in rows:
+            self.assertLessEqual(float(row["lower_95_mtco2e"]), float(row["emissions_2024_mtco2e"]))
+            self.assertGreaterEqual(float(row["upper_95_mtco2e"]), float(row["emissions_2024_mtco2e"]))
+
+    def test_ndc_observation_years_are_complete(self) -> None:
+        ndc = load_ndc_inputs(SOURCE_PATH)
+        for year in range(2021, 2025):
+            self.assertIn(f"emissions_{year}_mtco2e", ndc)
 
 
 if __name__ == "__main__":

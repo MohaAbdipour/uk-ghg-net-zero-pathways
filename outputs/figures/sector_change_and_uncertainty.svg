@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="900" viewBox="0 0 1500 900">
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="65.0" y="58.0" font-size="28" text-anchor="start" font-weight="bold" fill="#1f2933">Sector changes and uncertainty in territorial emissions</text>
+<text x="65.0" y="96.0" font-size="20" text-anchor="start" font-weight="bold" fill="#1f2933">a. Contribution to the UK reduction</text>
+<text x="790.0" y="96.0" font-size="20" text-anchor="start" font-weight="bold" fill="#1f2933">b. Published 2024 inventory uncertainty</text>
+<line x1="275.0" y1="125.0" x2="275.0" y2="755.0" stroke="#d9dee3" stroke-width="1"/>
+<text x="275.0" y="785.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">0</text>
+<line x1="345.8" y1="125.0" x2="345.8" y2="755.0" stroke="#d9dee3" stroke-width="1"/>
+<text x="345.8" y="785.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">30</text>
+<line x1="416.7" y1="125.0" x2="416.7" y2="755.0" stroke="#d9dee3" stroke-width="1"/>
+<text x="416.7" y="785.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">60</text>
+<line x1="487.5" y1="125.0" x2="487.5" y2="755.0" stroke="#d9dee3" stroke-width="1"/>
+<text x="487.5" y="785.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">90</text>
+<line x1="558.3" y1="125.0" x2="558.3" y2="755.0" stroke="#d9dee3" stroke-width="1"/>
+<text x="558.3" y="785.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">120</text>
+<line x1="629.2" y1="125.0" x2="629.2" y2="755.0" stroke="#d9dee3" stroke-width="1"/>
+<text x="629.2" y="785.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">150</text>
+<line x1="700.0" y1="125.0" x2="700.0" y2="755.0" stroke="#d9dee3" stroke-width="1"/>
+<text x="700.0" y="785.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">180</text>
+<text x="487.5" y="820.0" font-size="16" text-anchor="middle" font-weight="normal" fill="#1f2933">Reduction from 1990 to 2024 (MtCO2e)</text>
+<text x="255.0" y="151.0" font-size="15" text-anchor="end" font-weight="normal" fill="#1f2933">Electricity supply</text>
+<rect x="275" y="128" width="392.7" height="34" rx="2" fill="#2c7fb8"/>
+<text x="676.7" y="151.0" font-size="14" text-anchor="start" font-weight="normal" fill="#1f2933">166.3 (39.8%)</text>
+<text x="255.0" y="228.0" font-size="15" text-anchor="end" font-weight="normal" fill="#1f2933">Industry</text>
+<rect x="275" y="205" width="257.7" height="34" rx="2" fill="#2c7fb8"/>
+<text x="541.7" y="228.0" font-size="14" text-anchor="start" font-weight="normal" fill="#1f2933">109.2 (26.2%)</text>
+<text x="255.0" y="305.0" font-size="15" text-anchor="end" font-weight="normal" fill="#1f2933">Fuel supply</text>
+<rect x="275" y="282" width="114.2" height="34" rx="2" fill="#2c7fb8"/>
+<text x="398.2" y="305.0" font-size="14" text-anchor="start" font-weight="normal" fill="#1f2933">48.4 (11.6%)</text>
+<text x="255.0" y="382.0" font-size="15" text-anchor="end" font-weight="normal" fill="#1f2933">Waste</text>
+<rect x="275" y="359" width="79.3" height="34" rx="2" fill="#2c7fb8"/>
+<text x="363.3" y="382.0" font-size="14" text-anchor="start" font-weight="normal" fill="#1f2933">33.6 (8.0%)</text>
+<text x="255.0" y="459.0" font-size="15" text-anchor="end" font-weight="normal" fill="#1f2933">Buildings and product uses</text>
+<rect x="275" y="436" width="65.4" height="34" rx="2" fill="#2c7fb8"/>
+<text x="349.4" y="459.0" font-size="14" text-anchor="start" font-weight="normal" fill="#1f2933">27.7 (6.6%)</text>
+<text x="255.0" y="536.0" font-size="15" text-anchor="end" font-weight="normal" fill="#1f2933">Domestic transport</text>
+<rect x="275" y="513" width="32.6" height="34" rx="2" fill="#2c7fb8"/>
+<text x="316.6" y="536.0" font-size="14" text-anchor="start" font-weight="normal" fill="#1f2933">13.8 (3.3%)</text>
+<text x="255.0" y="613.0" font-size="15" text-anchor="end" font-weight="normal" fill="#1f2933">LULUCF</text>
+<rect x="275" y="590" width="23.6" height="34" rx="2" fill="#2c7fb8"/>
+<text x="307.6" y="613.0" font-size="14" text-anchor="start" font-weight="normal" fill="#1f2933">10.0 (2.4%)</text>
+<text x="255.0" y="690.0" font-size="15" text-anchor="end" font-weight="normal" fill="#1f2933">Agriculture</text>
+<rect x="275" y="667" width="20.0" height="34" rx="2" fill="#2c7fb8"/>
+<text x="304.0" y="690.0" font-size="14" text-anchor="start" font-weight="normal" fill="#1f2933">8.5 (2.0%)</text>
+<line x1="1010.0" y1="125.0" x2="1010.0" y2="755.0" stroke="#d9dee3" stroke-width="1"/>
+<text x="1010.0" y="785.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">0</text>
+<line x1="1091.0" y1="125.0" x2="1091.0" y2="755.0" stroke="#d9dee3" stroke-width="1"/>
+<text x="1091.0" y="785.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">25</text>
+<line x1="1172.0" y1="125.0" x2="1172.0" y2="755.0" stroke="#d9dee3" stroke-width="1"/>
+<text x="1172.0" y="785.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">50</text>
+<line x1="1253.0" y1="125.0" x2="1253.0" y2="755.0" stroke="#d9dee3" stroke-width="1"/>
+<text x="1253.0" y="785.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">75</text>
+<line x1="1334.0" y1="125.0" x2="1334.0" y2="755.0" stroke="#d9dee3" stroke-width="1"/>
+<text x="1334.0" y="785.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">100</text>
+<line x1="1415.0" y1="125.0" x2="1415.0" y2="755.0" stroke="#d9dee3" stroke-width="1"/>
+<text x="1415.0" y="785.0" font-size="14" text-anchor="middle" font-weight="normal" fill="#5d6770">125</text>
+<line x1="1010.0" y1="125.0" x2="1010.0" y2="755.0" stroke="#5d6770" stroke-width="1.4"/>
+<text x="1212.5" y="820.0" font-size="16" text-anchor="middle" font-weight="normal" fill="#1f2933">Emissions and 95% range (MtCO2e)</text>
+<text x="990.0" y="151.0" font-size="15" text-anchor="end" font-weight="normal" fill="#1f2933">Domestic transport</text>
+<line x1="1368.4" y1="145.0" x2="1380.8" y2="145.0" stroke="#1b9e77" stroke-width="4"/>
+<line x1="1368.4" y1="137.0" x2="1368.4" y2="153.0" stroke="#1b9e77" stroke-width="2"/>
+<line x1="1380.8" y1="137.0" x2="1380.8" y2="153.0" stroke="#1b9e77" stroke-width="2"/>
+<circle cx="1374.5" cy="145.0" r="6" fill="#17365d"/>
+<text x="990.0" y="228.0" font-size="15" text-anchor="end" font-weight="normal" fill="#1f2933">Buildings and product uses</text>
+<line x1="1269.2" y1="222.0" x2="1285.5" y2="222.0" stroke="#1b9e77" stroke-width="4"/>
+<line x1="1269.2" y1="214.0" x2="1269.2" y2="230.0" stroke="#1b9e77" stroke-width="2"/>
+<line x1="1285.5" y1="214.0" x2="1285.5" y2="230.0" stroke="#1b9e77" stroke-width="2"/>
+<circle cx="1277.2" cy="222.0" r="6" fill="#17365d"/>
+<text x="990.0" y="305.0" font-size="15" text-anchor="end" font-weight="normal" fill="#1f2933">Agriculture</text>
+<line x1="1151.5" y1="299.0" x2="1172.3" y2="299.0" stroke="#1b9e77" stroke-width="4"/>
+<line x1="1151.5" y1="291.0" x2="1151.5" y2="307.0" stroke="#1b9e77" stroke-width="2"/>
+<line x1="1172.3" y1="291.0" x2="1172.3" y2="307.0" stroke="#1b9e77" stroke-width="2"/>
+<circle cx="1161.7" cy="299.0" r="6" fill="#17365d"/>
+<text x="990.0" y="382.0" font-size="15" text-anchor="end" font-weight="normal" fill="#1f2933">Industry</text>
+<line x1="1156.8" y1="376.0" x2="1165.1" y2="376.0" stroke="#1b9e77" stroke-width="4"/>
+<line x1="1156.8" y1="368.0" x2="1156.8" y2="384.0" stroke="#1b9e77" stroke-width="2"/>
+<line x1="1165.1" y1="368.0" x2="1165.1" y2="384.0" stroke="#1b9e77" stroke-width="2"/>
+<circle cx="1160.9" cy="376.0" r="6" fill="#17365d"/>
+<text x="990.0" y="459.0" font-size="15" text-anchor="end" font-weight="normal" fill="#1f2933">Electricity supply</text>
+<line x1="1131.7" y1="453.0" x2="1140.9" y2="453.0" stroke="#1b9e77" stroke-width="4"/>
+<line x1="1131.7" y1="445.0" x2="1131.7" y2="461.0" stroke="#1b9e77" stroke-width="2"/>
+<line x1="1140.9" y1="445.0" x2="1140.9" y2="461.0" stroke="#1b9e77" stroke-width="2"/>
+<circle cx="1136.2" cy="453.0" r="6" fill="#17365d"/>
+<text x="990.0" y="536.0" font-size="15" text-anchor="end" font-weight="normal" fill="#1f2933">Fuel supply</text>
+<line x1="1096.8" y1="530.0" x2="1110.7" y2="530.0" stroke="#1b9e77" stroke-width="4"/>
+<line x1="1096.8" y1="522.0" x2="1096.8" y2="538.0" stroke="#1b9e77" stroke-width="2"/>
+<line x1="1110.7" y1="522.0" x2="1110.7" y2="538.0" stroke="#1b9e77" stroke-width="2"/>
+<circle cx="1103.4" cy="530.0" r="6" fill="#17365d"/>
+<text x="990.0" y="613.0" font-size="15" text-anchor="end" font-weight="normal" fill="#1f2933">Waste</text>
+<line x1="1060.4" y1="607.0" x2="1106.8" y2="607.0" stroke="#1b9e77" stroke-width="4"/>
+<line x1="1060.4" y1="599.0" x2="1060.4" y2="615.0" stroke="#1b9e77" stroke-width="2"/>
+<line x1="1106.8" y1="599.0" x2="1106.8" y2="615.0" stroke="#1b9e77" stroke-width="2"/>
+<circle cx="1080.1" cy="607.0" r="6" fill="#17365d"/>
+<text x="990.0" y="690.0" font-size="15" text-anchor="end" font-weight="normal" fill="#1f2933">LULUCF</text>
+<line x1="997.2" y1="684.0" x2="1025.1" y2="684.0" stroke="#1b9e77" stroke-width="4"/>
+<line x1="997.2" y1="676.0" x2="997.2" y2="692.0" stroke="#1b9e77" stroke-width="2"/>
+<line x1="1025.1" y1="676.0" x2="1025.1" y2="692.0" stroke="#1b9e77" stroke-width="2"/>
+<circle cx="1011.1" cy="684.0" r="6" fill="#17365d"/>
+<text x="65.0" y="868.0" font-size="14" text-anchor="start" font-weight="normal" fill="#5d6770">Panel a: UK only. Panel b: UK, Crown Dependencies and relevant Overseas Territories. LULUCF is a net balance.</text>
+</g>
+</svg>

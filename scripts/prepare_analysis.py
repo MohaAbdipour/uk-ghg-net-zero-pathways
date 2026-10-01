@@ -78,13 +78,48 @@ def load_ndc_inputs(workbook_path: Path) -> dict[str, float]:
 
     headers = {sheet.cell(11, column).value: column for column in range(2, 13)}
     base = float(sheet.cell(12, headers["Base year"]).value)
-    emissions_2024 = float(sheet.cell(12, headers["2024"]).value)
+    observations = {
+        int(year): float(sheet.cell(12, headers[year]).value)
+        for year in ("2021", "2022", "2023", "2024")
+    }
+    emissions_2024 = observations[2024]
     published_2030_target = float(sheet.cell(15, headers["2030"]).value)
-    return {
+    result = {
         "base_year_mtco2e": base,
         "emissions_2024_mtco2e": emissions_2024,
         "published_2030_target_mtco2e": published_2030_target,
     }
+    result.update({f"emissions_{year}_mtco2e": value for year, value in observations.items()})
+    return result
+
+
+def load_sector_uncertainty(workbook_path: Path) -> list[dict[str, float | str]]:
+    """Read published 2024 uncertainty intervals from DESNZ Table 4.2.
+
+    These values cover the UK, Crown Dependencies and relevant Overseas
+    Territories. They are kept separate from the UK-only Table 1.2 values.
+    """
+    workbook = load_workbook(workbook_path, read_only=True, data_only=True)
+    sheet = workbook["4.2"]
+    coverage = str(sheet["A9"].value)
+    if "Crown Dependencies" not in coverage or "Overseas Territories" not in coverage:
+        raise ValueError("Unexpected geographical coverage in Table 4.2")
+
+    rows: list[dict[str, float | str]] = []
+    for row in range(11, 20):
+        rows.append(
+            {
+                "sector": str(sheet.cell(row, 1).value),
+                "emissions_2024_mtco2e": float(sheet.cell(row, 3).value),
+                "uncertainty_fraction": float(sheet.cell(row, 4).value),
+                "lower_95_mtco2e": float(sheet.cell(row, 5).value),
+                "upper_95_mtco2e": float(sheet.cell(row, 6).value),
+                "change_1990_2024_fraction": float(sheet.cell(row, 7).value),
+                "change_lower_95_fraction": float(sheet.cell(row, 8).value),
+                "change_upper_95_fraction": float(sheet.cell(row, 9).value),
+            }
+        )
+    return rows
 
 
 def calculate_pathways(base: float, emissions_2024: float) -> list[dict[str, float | int]]:
@@ -135,7 +170,22 @@ def main() -> None:
     ):
         raise ValueError("Calculated 2030 target does not match Table 2.2")
 
+    uncertainty = load_sector_uncertainty(SOURCE_PATH)
+    for record in uncertainty:
+        central = float(record["emissions_2024_mtco2e"])
+        lower = float(record["lower_95_mtco2e"])
+        upper = float(record["upper_95_mtco2e"])
+        if not lower <= central <= upper:
+            raise ValueError(f"Uncertainty interval does not contain central estimate for {record['sector']}")
+
+    observations = [
+        {"year": year, "emissions_mtco2e": ndc[f"emissions_{year}_mtco2e"]}
+        for year in range(2021, 2025)
+    ]
+
     write_csv(OUTPUT_DIR / "sector_change_1990_2024.csv", sectors)
+    write_csv(OUTPUT_DIR / "sector_uncertainty_2024.csv", uncertainty)
+    write_csv(OUTPUT_DIR / "ndc_observations_2021_2024.csv", observations)
     write_csv(OUTPUT_DIR / "ndc_pathway_diagnostics.csv", pathways)
 
 
